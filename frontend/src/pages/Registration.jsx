@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import Logo from '../assets/vcart-logo.png';
-import { authDataContext } from '../context/authContext';
+import { authDataContext } from '../context/AuthContext.jsx';
 import { userDataContext } from '../context/UserContext';
 
 function Registration() {
