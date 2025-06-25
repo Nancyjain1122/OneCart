@@ -33,12 +33,12 @@ function Login() {
         setMessage('✅ Login successful!');
 
         try {
-          await getCurrentUser(); // Try to fetch user data
+          await getCurrentUser(); 
         } catch (err) {
           console.warn("⚠️ getCurrentUser failed", err);
         }
 
-        // ✅ Always navigate to home after login
+        
         setTimeout(() => {
           navigate('/');
         }, 1000);
