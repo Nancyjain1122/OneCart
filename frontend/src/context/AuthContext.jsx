@@ -3,7 +3,7 @@ import React, { createContext } from 'react';
 export const authDataContext = createContext();
 
 const AuthContext = ({ children }) => {
-  const serverUrl = 'http://localhost:8000'; // your backend URL
+  const serverUrl = 'https://onecart-backend-jkd8.onrender.com'; // your backend URL
 
   return (
     <authDataContext.Provider value={serverUrl}>
