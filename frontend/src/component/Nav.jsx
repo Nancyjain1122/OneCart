@@ -4,7 +4,7 @@ import { FaCircleUser } from 'react-icons/fa6';
 import { MdOutlineShoppingCart } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/vcart-logo.png';
-import { authDataContext } from '../context/authContext';
+import { authDataContext } from '../context/AuthContext';
 import { userDataContext } from '../context/UserContext';
 import { IoMdHome } from "react-icons/io";
 import { BsCollection } from "react-icons/bs";
