@@ -18,6 +18,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage('');
+
     try {
       const res = await fetch(`${serverUrl}/api/auth/login`, {
         method: 'POST',
@@ -30,8 +31,17 @@ function Login() {
 
       if (res.ok) {
         setMessage('✅ Login successful!');
-        await getCurrentUser();
-        setTimeout(() => navigate('/'), 1000);
+
+        try {
+          await getCurrentUser(); // Try to fetch user data
+        } catch (err) {
+          console.warn("⚠️ getCurrentUser failed", err);
+        }
+
+        // ✅ Always navigate to home after login
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
       } else {
         setMessage(`❌ ${data.message || 'Login failed'}`);
       }
@@ -43,7 +53,8 @@ function Login() {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-l from-[#141414] to-[#0c2025] text-white flex flex-col items-center justify-start">
-      
+
+      {/* Logo & Back to Home */}
       <div
         className="w-full h-[80px] flex items-center px-[30px] gap-[10px] cursor-pointer"
         onClick={() => navigate('/')}
@@ -52,11 +63,13 @@ function Login() {
         <h1 className="text-[22px] font-sans">OneCart</h1>
       </div>
 
+      {/* Header */}
       <div className="text-center mt-[20px]">
         <h2 className="text-[25px] font-semibold">Login Page</h2>
         <p className="text-[16px] mt-1">Welcome back! Please login to your account</p>
       </div>
 
+      {/* Form */}
       <div className="w-full max-w-[600px] mt-[30px] px-[20px]">
         <form
           className="bg-[#00000025] border border-[#96969635] backdrop-blur-md rounded-xl shadow-xl p-[30px] flex flex-col gap-[20px]"
@@ -95,6 +108,7 @@ function Login() {
             Login
           </button>
 
+          {/* Message */}
           {message && (
             <p className="text-center text-[15px] text-yellow-300">{message}</p>
           )}
